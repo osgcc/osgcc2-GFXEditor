@@ -1,0 +1,84 @@
+***********************************************************************
+Programmer: Sour Swinger
+Website: http://blog.sourswinger.name
+contact: soursw@gmail.com
+GFX Editor v08.410
+
+Donations: Quick donations can be made by simplying clicking on one of my Google Ads.  Otherwise, please email me if you feel inclined to offer check/cash.  Would be much appreciated. :)
+***********************************************************************
+
+
+
+
+***********************************************************************
+Be advised, when loading the GFX Editor use the following command to start the Qbasic IDE: qb.exe /L qb.qlb
+
+This is needed for the mouse routines to work. Without you won’t be able to run the program. Included in the zip is GFX Editor and GFX Demo along with needed example graphic files. I also included the qb.qlb file for those that may be missing it.
+***********************************************************************
+
+
+
+***********************************************************************
+GFX Editor:
+Supports only SCREEN 13. This was chosen due to the 256 color support. Max sprite size is 72×64. I included my own custom PALETTE. You may plop your own in, simply change the SUB SetPalette. Some modifications may then be needed to SUB UpdatePaletteGradient. Mouse support is also included.
+
+Does NOT support saving multiple images into one file for animation purposes. Ran out of time to implement.
+
+My custom PALETTE supports 15 shades of the following colors: grey, red, orange, brown, yellow, chartreuse, green, spring green, cyan, azure, blue, purple, magenta, and fuchsia. It also supports dynamic PALETTE changing based off a 30 FPS (Frames Per Second) display. There are 15 fading and 15 blinking colors derived off the main colors mentioned above. Three colors are reserved (0, 14, 255). For transparency, 0. For the grid color, 14. For the mouse, 255. Colors 3 through 13 are unused and can add additional custom colors to them.
+
+Please note, I basically rushed this in the last few days because the competition is today. The coding style is HORRIBLE and not a good example of proper techniques nor how to accomplish certain things. Though check out SUB SaveImage for how I utilized BSAVE.
+
+The editor has a very basic layout. The PALETTE to select your colors is on the bottom right hand side of the screen. The thumbnail of what the image will actually look like can be seen at the top right of the screen. The entire screen to the left is the actual grid to draw your graphics. Your mouse will turn to whatever color is selected to be painted with.
+
+Left Click: Selects color when over PALETTE. Paints color when over grid.
+
+Right Click: Erases color when over grid square. (Paints the transparency color).
+
+f: Flips between the two PALETTEs to select colors from. This was done to save on space.
+
+i: Displays info about the current image.
+
+n: Create new image.
+	y: Save current image before starting a new one.
+	n: Don’t save current image, just start a new one.
+	c: Cancel new image selection.
+
+	1 to 72: Sets new image width.
+	-1: Cancels new image selection.
+
+	1 to 64: Sets new image height.
+	-1: Cancels new image selection.
+
+l: <-(lower case “L”) Loads an existing image.
+	y: Save current image before loading.
+	n: Don’t save current image, just load new one.
+	c: Cancel load selection.
+
+s: Saves current image.
+	If not saved yet, will ask for file name first.
+	y: Saves image.
+	n: Erases file name (NOT the file), recalls saves selection.
+	c: Cancels save selection.
+
+-: Decreases current color selection by one shade.
+
+=: Increases current color selection by one shade.
+
+[esc]: Terminates program.
+***********************************************************************
+
+
+
+
+
+***********************************************************************
+GFX Demo
+Demonstrates good programming techniques since its meant to show how to utilize the saved graphics from the editor. Too lazy for comments. LoL. Any questions, let me know.
+
+Supports SCREEN 13 with double buffering (via a virtual screen/page) to eliminate flicker. Supports utilizing the transparency color as well as the dynamic PALETTE changing. Displays images at a rate of 30 FPS.
+
+Does NOT demonstrate animation. This program’s sole purpose is to show how to BLOAD said graphics and PUT to the screen. Animation is the easier part.
+
+First hit “l” (lower case “L”) to BLOAD the graphics from hard disk. Then hit “p” to PUT images into the virtual page. Since the screen is continuously updated, the graphics will quickly display to the screen automatically. I separated the steps to allow easier understanding of the process. Hit [esc] to quite.
+
+***********************************************************************
